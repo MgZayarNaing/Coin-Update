@@ -1,0 +1,455 @@
+{% extends 'base.html' %}
+
+{% block title %}Balance{% endblock %}
+
+{% block body %}
+<br><br><br><br><br><br>
+
+<style>
+    .a1 {
+        background-color: gray;
+        width: 100%;
+        /* height: 100vh; */
+    }
+
+    .b1 {
+        width: 100%;
+        height: 100%;
+        display: flex;
+    }
+
+    .b2 {
+        display: block;
+        width: 50%;
+        margin: 50px 50px 0 50px;
+
+    }
+
+    .c1 {
+        color: white;
+        font-size: 3.75rem;
+    }
+
+    .c2 {
+        background-color: #0b0b0b;
+        width: 200px;
+        height: 100px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border-radius: 12px;
+        box-shadow: 5px 5px 2.5px gray;
+
+    }
+
+    .c2 h2 {
+        font-size: 2rem;
+        color: white;
+    }
+
+    .c3 {
+        color: white;
+        display: flex;
+        justify-content: center;
+        padding-top: 30px;
+        padding-bottom: 20px;
+        gap: 150px;
+    }
+
+    span {
+        font-size: 3rem;
+        font-weight: 900;
+        color: white;
+    }
+
+    .c4 {
+        background-color: #0b0b0b;
+        color: white;
+        font-size: 1.75rem;
+        width: 250px;
+        height: 50px;
+        margin-top: 15px;
+        border-radius: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .c5 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+        gap: 10px;
+        margin-bottom: 50px;
+    }
+
+    .c6 {
+        background-color: blue;
+        color: white;
+        width: 100px;
+        height: 40px;
+        font-size: 1.75rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        border: 2px solid white;
+    }
+
+    .c7 {
+        background-color: red;
+        color: white;
+        width: 100px;
+        height: 40px;
+        font-size: 1.75rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        border: 2px solid white;
+    }
+
+    .b3 {
+        display: block;
+        width: 50%;
+
+    }
+
+    .t1 {
+        width: 100%;
+        height: 100%;
+        display: flex;
+
+    }
+
+    .t2 {
+        display: block;
+        width: 50%;
+        /* margin: 50px; */
+
+    }
+
+    .t3 {
+        background-color: #0b0b0b;
+        width: 500px;
+        height: 70px;
+        display: flex;
+        /* flex-direction: column; */
+        justify-content: space-between;
+        border-radius: 24px;
+        padding: 20px;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .t3 h1 {
+        font-size: 2.5rem;
+        color: white;
+    }
+
+    .t4 {
+        display: flex;
+        width: 200px;
+        height: 70px;
+        background-color: gold;
+        justify-content: center;
+        align-items: center;
+        font-weight: 900;
+        font-size: 3rem;
+        margin-bottom: 20px;
+    }
+
+    .t5 {
+        /* background-color: gold; */
+        display: flex;
+        justify-content: center;
+        gap: 70px;
+        margin-bottom: 20px;
+    }
+
+    .t5 .bull {
+        background-color: white;
+        border: 5px solid blue;
+        font-size: 2.75rem;
+        width: 150px;
+        border-radius: 25px;
+    }
+
+    .t5 .single {
+        background-color: white;
+        border: 5px solid red;
+        font-size: 2.75rem;
+        width: 150px;
+        border-radius: 25px;
+    }
+
+    .t6 {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+
+    }
+
+    .t6 .am {
+        background-color: gray;
+        border: 5px solid white;
+        font-size: 2.75rem;
+        width: 150px;
+        border-radius: 12px;
+
+    }
+
+    .t7 {
+        display: flex;
+        justify-content: center;
+        gap: 70px;
+        margin-bottom: 20px;
+    }
+
+    .t7 .bear {
+        background-color: white;
+        border: 5px solid red;
+        font-size: 2.75rem;
+        width: 150px;
+        border-radius: 25px;
+
+    }
+
+    .t7 .twin {
+        background-color: white;
+        border: 5px solid blue;
+        font-size: 2.75rem;
+        width: 150px;
+        border-radius: 25px;
+
+    }
+
+    .q1 {
+        width: 50%;
+    }
+
+    .q2 {
+        display: flex;
+        width: 800px;
+        height: 80px;
+        background-color: #494949;
+        justify-content: center;
+        align-items: center;
+        font-size: 2.5rem;
+        font-weight: 500;
+        border: 2px solid gold;
+        color: white;
+
+    }
+
+    .q3 {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    .q4 {
+        display: flex;
+    }
+
+    .box3 {
+        width: 800px;
+
+    }
+
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th,
+    td {
+        padding: 8px;
+        text-align: center;
+        border: 2px solid gold;
+        font-size: 1.75rem;
+        color: white;
+        font-weight: bold;
+
+    }
+
+    th {
+        background-color: #ffffff;
+        color: black;
+        border: 2px solid gold;
+        text-align: center;
+        font-size: 1.75rem;
+
+    }
+
+    .tb:hover {
+        background-color: #ffffff;
+        color: black;
+    }
+
+    .ans1 {
+        border: 2px solid white;
+        color: white;
+        border-radius: 10px;
+        width: 100px;
+        height: 35px;
+        background-color: blue;
+        font-weight: 900;
+    }
+
+    .ans2 {
+        border: 2px solid white;
+        color: white;
+        border-radius: 10px;
+        width: 100px;
+        height: 35px;
+        background-color: red;
+        font-weight: 900;
+
+    }
+</style>
+
+<div class="a1">
+    <div class="b1">
+        <div class="b2">
+            <center>
+                <h2 class="c1">US</h2>
+
+                <div class="c2">
+                    <h2>Total Amount</h2>
+                    <h2>110222 USDT</h2>
+
+                </div>
+
+                <div class="c3">
+                    <h1>Last Time</h1>
+                    <h1>71976</h1>
+                </div>
+
+                <span> Price Range</span>
+                <div class="c4">
+                    <h2>8 + 7 + 3 = 18 </h2>
+                </div>
+                <div class="c5">
+                    <h4 class="c6">Bull</h4>
+                    <h4 class="c7">Twin</h4>
+                </div>
+            </center>
+
+
+        </div>
+        <div class="b3">
+
+
+        </div>
+    </div>
+    <div class="t1">
+        <div class="t2">
+            <center>
+                <div class="t3">
+                    <h1>Open Time</h1>
+                    <h1>64185</h1>
+                </div>
+                <div class="t4">
+                    <h1 id="timer">03:00</h1>
+                </div>
+
+                <div class="t5">
+                    <h2 class="bull">Bull</h2>
+                    <h2 class="single">Single</h2>
+                </div>
+                <div class="t6">
+                    <h2 class="am">1.50</h2>
+                </div>
+                <div class="t7">
+                    <h2 class="bear">Bear</h2>
+                    <h2 class="twin">Twin</h2>
+                </div>
+            </center>
+
+
+        </div>
+        <div class="q1">
+            <center>
+                <div class="q2">
+                    <h2>Recent History</h2>
+                </div>
+            </center>
+            <center>
+                <div class="q3">
+
+                    <center class="q4">
+                        <div class="box3">
+                            <table class="q5">
+                                <thead class="q6">
+                                    <tr>
+                                        <th>Round</th>
+                                        <th>Result</th>
+                                        <th>STATUS</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="tb">
+                                        <td>1125</td>
+                                        <td>3 + 3 + 3 = 9</td>
+                                        <td>
+                                            <button class="ans1">Approved</button>
+                                            <button class="ans2">Approved</button>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr class="tb">
+                                        <td>1125</td>
+                                        <td>3 + 3 + 2 = 8</td>
+                                        <td>
+                                            <button class="ans2">Approved</button>
+                                            <button class="ans1">Approved</button>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr class="tb">
+                                        <td>1125</td>
+                                        <td>3 + 6 + 3 = 12</td>
+                                        <td>
+                                            <button class="ans1">Approved</button>
+                                            <button class="ans2">Approved</button>
+
+                                        </td>
+                                    </tr>
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </center>
+
+                </div>
+            </center>
+            <input type="submit" hidden/>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    // let num = 10
+    // const timing = () => {
+    //     let m = Math.floor(num/60)
+    //     let s = num%60
+    //     num -= 1
+    //     console.log("ok",m,s)
+    //     second = s<10 ?"0"+ s.toString(): s.toString();
+    //     document.getElementById("timer").innerHTML = m.toString()+" : " + second
+    //      if(num == 0){
+    //         clearInterval(myTimeout)
+    //         window.location.href="/app/randoms/"
+    //     }
+    // }
+    // const myTimeout =  setInterval(timing, 1000);
+</script>
+
+{% endblock %}

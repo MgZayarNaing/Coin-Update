@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+
+{% block title %}Withdraw{% endblock %}
+
+{% block body %}
+
+<style>
+    .withdraw-wrapper {
+    background-color: #000000;
+    margin-top:50px;
+    width:100%;
+    height:auto;
+    font-size:1.7rem;
+    display: flex;
+    color:white;
+    padding:50px;
+    gap:40px;
+    justify-content: center;
+}
+
+.withdraw-wrapper .section {
+    padding: 10px 10px 0 50px;
+    width: 80%;
+    margin: auto;
+    margin-top: 0;
+}
+
+.withdraw-wrapper .section h2 {
+    color: #ffffff;
+}
+
+.box {
+    margin: 25px auto;
+}
+
+.withdraw-wrapper .section .box label {
+    width: 110px;
+    color: #ffffff;
+}
+
+.withdraw-wrapper .section .box select,
+.withdraw-wrapper .section .box input {
+    width: 80%;
+    background: transparent;
+    border-radius: 5px;
+    height: 30px;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    outline: none;
+}
+
+.withdraw-wrapper .section .box select option {
+    color: #000000;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.withdraw-wrapper .section .box textarea {
+    background: transparent;
+    color: #fff;
+    border: 1px solid #ffffff;
+    width: 80%;
+    height: 150px;
+    resize: none;
+    outline: none;
+    padding: 20px;
+}
+
+.withdraw-wrapper .section .box button {
+    background: #b18a6b;
+    border-radius: 5px;
+    padding: 5px 20px;
+    color: #fff;
+    border: none;
+    font-weight: bold;
+}
+
+.noti {
+    background-color: gray;
+    padding: 0;
+    margin: 0;
+    color: white;
+    text-align: center;
+    font-weight: 400;
+
+
+}
+</style>
+
+
+    <p class="noti">After trading the same amount as you deposit, the minimum withdraw amount can be withdraw from $100.</p>
+
+<div class="withdraw-wrapper">
+    <form class="section" method="POST" enctype="multipart/form-data" action="/app/withdraw/">
+        {% csrf_token %}
+        <h2>Withdraw</h2>
+        <div class="box">
+            <label>Coin</label>
+            <select name="coin_type" style="margin-left:50px;">
+                {% for c in coin_type %}
+
+                <option value="{{c.id}}">{{c.type}}</option>
+
+                {% endfor %}
+            </select>
+        </div>
+        <div class="box">
+            <label>Address</label>
+            <input type="address" style="padding:5px 10px;margin-left:20px;" name="quantity">
+        </div>
+        <div class="box">
+            <label>Network</label>
+            <select name="network_type" style="margin-left:20px;">
+                {% for c in network_type %}
+
+                <option value="{{c.id}}">{{c.type}}</option>
+
+                {% endfor %}
+            </select>
+        </div>
+        <div class="box">
+            <label>Amount</label>
+            <input type="number" style="padding:5px 10px;margin-left:20px;" name="quantity">
+        </div>
+        <center>
+            <div class="box">
+                <button type="submit">Withdraw</button>
+            </div>
+        </center>
+    </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends 'admin_base.html' %}
+
+{% block title %}User table{% endblock %}
+
+{% block body %}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Tables /</span> Basic Tables</h4>
+
+    <!-- Basic Bootstrap Table -->
+    <div class="card">
+      <h5 class="card-header">User List</h5>
+      <div class="table-responsive text-nowrap">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone Number</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody class="table-border-bottom-0">
+            {% for u in myuser %}
+            {% if u.username != "admin" %}
+            <tr>
+              <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{u.username}}</strong></td>
+              <td>{{u.email}}</td>
+              <td>{{u.phone}}</td>
+              <td>
+                {% if u.status == True %}
+                <span class="badge bg-label-primary me-1">Activate</span>
+                {% else %}
+                <span class="badge bg-label-warning me-1">Deactivate</span>
+                {% endif %}
+              </td>
+              <td>
+                <div class="dropdown">
+                  <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                    <i class="bx bx-dots-vertical-rounded"></i>
+                  </button>
+                  {% if u.status == False %}
+                 <form method="POST" action="/myadmin/admin_register_confirm/{{u.id}}/" class="dropdown-menu">
+                    {% csrf_token %}
+                    <button type="submit" class="dropdown-item" href="javascript:void(0);">Activate</button>
+                  </form>
+                    
+                    {% else %}
+                    <form method="POST" action="/myadmin/admin_register_destroy/{{u.id}}/" class="dropdown-menu">
+                        {% csrf_token %}
+                        <button type="submit" class="dropdown-item" href="javascript:void(0);">Deactivate</button>
+                      </form>
+                    {% endif %}
+                </div>
+              </td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!--/ Basic Bootstrap Table -->
+
+    <hr class="my-5" />
+</div>
+
+{% endblock %}

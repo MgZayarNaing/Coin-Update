@@ -1,0 +1,48 @@
+{% extends 'admin_base.html' %}
+
+{% block title %}User table{% endblock %}
+
+{% block body %}
+
+<div class="content-wrapper">
+  <!-- Content -->
+
+  <div class="container-xxl flex-grow-1 container-p-y" style="margin-bottom: 0;padding-bottom: 0;">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Forms /</span> Basic Inputs</h4>
+    <form class="card" method="POST" style="margin-bottom: 0;padding-bottom: 0;" action="/myadmin/network_create/"
+      enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="card-body" style="padding:10px 20px;">
+        <div>
+          <label for="defaultInput" class="form-label">Network Name</label>
+          <input id="defaultInput" name="type" class="form-control" type="text" required />
+        </div>
+      </div>
+      <div class="card-body" style="padding:10px 20px;">
+        <div>
+          <label for="defaultInput" class="form-label">QR Code</label>
+          <input id="defaultInput" name="qrcode" class="form-control" type="file" required/>
+        </div>
+      </div>
+      <div class="card-body" style="padding:10px 20px;">
+        <div>
+          <label for="defaultInput" class="form-label">Link Name</label>
+          <input id="defaultInput" name="link_name" class="form-control" type="text" required/>
+        </div>
+      </div>
+      <div class="card-body" style="padding:10px 20px;">
+        <div>
+          <label for="defaultInput" class="form-label">Link Address</label>
+          <input id="defaultInput" name="link_address" class="form-control" type="text" required/>
+        </div>
+      </div>
+      <center>
+        <button type="submit" class="btn btn-success" style="margin-top: 50px;margin-bottom: 50px;width: 500px;">Create
+          Network</button>
+      </center>
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}

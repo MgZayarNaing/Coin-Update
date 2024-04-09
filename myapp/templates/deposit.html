@@ -1,0 +1,179 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Deposit{% endblock %}
+
+{% block body %}
+
+<style>
+    .deposit-wrapper{
+        margin-top:90px;
+        width:100%;
+        height:auto;
+        background-color:#000;
+        font-size:1.7rem;
+        display: flex;
+        color:white;
+        padding:50px;
+        gap:40px;
+        justify-content: space-between;
+    }
+    .deposit-wrapper .section-1 h2{
+        color:orange;
+    }
+    .deposit-wrapper .section-1 .box{
+        display:flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .box {
+        margin: 25px auto;
+    }
+    .deposit-wrapper .section-1 .box label{
+        color:orange;
+    }
+    .deposit-wrapper .section-1 .box select,
+    .deposit-wrapper .section-1 .box input{
+        width:350px;
+        background:transparent;
+        border-radius: 5px;
+        height:30px;
+        color:orange;
+        margin-left:10px;
+        border:1px solid orange;
+    }
+    .deposit-wrapper .section-1 .box select option{
+        color:#000000;
+    }
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    input::-webkit-file-upload-button{
+        background:transparent;
+        color:orange;
+        border:none;
+        outline:none;
+    }
+    .deposit-wrapper .section-1 .box button {
+        background:orange;
+        border-radius: 5px;
+        padding: 5px 20px;
+        color: #fff;
+        border:none;
+        font-weight: bold;
+    }
+    .section-2 {
+        /* width: 50%; */
+        margin: auto;
+        background:#1b1b1b;
+        border-radius: 15px;
+        /* margin-right:20px; */
+        
+    }
+    .section-2 .qr-card{
+        display:flex;
+    }
+    .section-2 .qr-card .qr-code{
+        width:200px;
+        height:200px;
+    }
+    .section-2 .qr-card .qr-code img{
+        width:100%;
+        height:100%;
+        padding:20px;
+        border-radius:30px;
+    }
+    .section-2 .qr-card .link{
+        padding:20px 10px;
+        color:orange;
+    }
+    .section-2 .qr-card .link p span{
+        font-weight: bold;
+    }
+    .section-2 .qr-card .link i{
+        color:#fff;
+        font-weight: bold;
+        padding-left:10px;
+    }
+</style>
+
+<div class="deposit-wrapper">
+        <form class="section-1" method="POST" enctype="multipart/form-data" action="/app/deposit/">
+            {% csrf_token %}
+            <h2>Deposit</h2>
+            <div class="box">
+                <label>Coin</label>
+                <select name="coin_type" style="margin-left:80px;">
+                    {% for c in coin_type %}
+        
+                    <option value="{{c.id}}">{{c.type}}</option>
+        
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="box">
+                <label>Network</label>
+                <select name="network_type" style="margin-left:52px;" id="option-select">
+                    <option value="none">Choose a network</option>
+                    {% for c in network_type %}
+            
+                    <option value="{{c.id}}">{{c.type}}</option>
+            
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="box">
+                <label>Amount</label>
+                <input type="number" style="padding:5px 10px;margin-left:52px;" name="quantity">
+            </div>
+            <div class="box">
+                <label>Upload Photo</label>
+                <input type="file" name="screenshot" oninput="preview.src= window.URL.createObjectURL(this.files[0])">
+            </div>
+            <div>
+                <img width="100%" height="100%" id="preview" src="{% static 'img/preview.jpg' %}">
+            </div>
+
+            <center>
+            <div class="box">
+                <button type="submit">Deposit</button>
+            </div>
+            </center>
+            
+        </form>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#option-select').change(function() {
+                var optionId = $(this).val();
+                $.ajax({
+                    url: '/app/get_qr_link/',
+                    data: {
+                        'option_id': optionId
+                    },
+                    dataType: 'json',
+                    success: function(data) {
+                        $('#image-container').html('<img src="' + data.image_url + '">');
+                        $('#link_name').html(data.link_name);
+                        $('#link_address').html(data.link_address);
+                    }
+                });
+            });
+        });
+    </script>
+    <div class="section-2">
+        <div class="qr-card">
+            <div id="image-container" class="qr-code"></div>
+            <div class="link">
+                <h5>Trading information</h5>
+                <p><span>Link Name : </span><font id="link_name">{{q.link_name}}</font></p>
+                <p><span>Link Address : </span><font id="link_address">{{q.link_address}}</font><i class="fa fa-copy"></i></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

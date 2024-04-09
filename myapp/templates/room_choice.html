@@ -1,0 +1,436 @@
+{% extends 'base.html' %}
+
+{% block title %}Room Choice{% endblock %}
+
+{% block body %}
+                <script>
+                    function myFunction() {
+                        alert("Not enough coin!");
+                    }
+                </script>
+
+                <style>
+                    .roomcontainer {
+                        /* background-color: blue; */
+                        width: 100%;
+                        /* height: 100vh; */
+                        margin-top:100px;
+
+                    }
+
+                    .a1 {
+                        /* background-color: gold; */
+                        /* width: 100%; */
+                        display: flex;
+                        gap: 50px;
+                        /* /* margin-top: 50px; */
+                        margin-bottom: 0px;
+                    }
+
+                    .b1 {
+                        width: 50%;
+                        display: flex;
+                        overflow: hidden;
+                    }
+
+                    .ab1 {
+                        background-color: #104088;
+                        width: 70%;
+                        height: 250px;
+                        border-radius: 24px;
+                        margin: auto;
+                        /* margin-top: 50px; */
+                        margin-bottom: 50px;
+
+
+                        display: flex;
+                        /* flex-direction: column; */
+                        /* align-items: center; */
+                        justify-content: center;
+                        padding-right: 35px;
+                        margin-right: 0;
+                    }
+
+                    .ab2 {
+                        background-color: #9c1f31;
+                        width: 70%;
+                        height: 250px;
+                        border-radius: 24px;
+                        /* margin: auto; */
+                        display: flex;
+                        /* flex-direction: column; */
+                        /* align-items: center; */
+                        justify-content: center;
+                        padding-right: 35px;
+                        margin-left: 0;
+                        margin-bottom: 50px;
+
+                    }
+
+                    .title1 {
+                        display: block;
+                        font-size: 1.75rem;
+                        /* justify-content: space-between; */
+                        /* padding: 20px 80px 20px; */
+                        gap: 70px;
+                        color: white;
+                    }
+
+                    .title1 h4 {
+                        padding-left: 30px;
+                        padding-top: 50px;
+                    }
+
+                    .b2 {
+                        width: 50%;
+                        display: flex;
+                    }
+
+                    .ab3 {
+                        background-color: #945ff7;
+                        width: 70%;
+                        height: 250px;
+                        border-radius: 24px;
+                        margin: auto;
+                        display: flex;
+                        justify-content: center;
+                        padding-right: 35px;
+                        margin-top: 0;
+                        margin-right: 0;
+
+                    }
+
+                    .ab4{
+                        background-color: #29bda7;
+                        width: 70%;
+                        height: 250px;
+                        border-radius: 24px;
+                        margin: auto;
+                        display: flex;
+                        /* flex-direction: column; */
+                        /* align-items: center; */
+                        justify-content: center;
+                        padding-right: 35px;
+                        margin-top: 0;
+                        margin-left: 0;
+
+                    }
+                    a,button{
+                        cursor:pointer;
+                        outline:none;
+                        border:none;
+                        text-decoration: none;
+                        background:transparent;
+                    }
+
+                </style>
+                {% if coin.quantity >= 0 and coin.quantity <= 99 %} 
+                <div class="roomcontainer">
+
+                    <div class="a1">
+                        <button class="b1" onclick="myFunction()">
+                            <div class="ab1">
+                                <div class="title1">
+                                    <h4>Number of Transctions 6231</h4>
+                                    <h4>Single minimum purchase 1</h4>
+                                </div>
+                                <div class="title1">
+                                    <h4>NEW MEMBER</h4>
+                                    <h4>Minimum entry balance 100 </h4>
+                                </div>
+                            </div>
+
+                        </button>
+                        <div class="b2" onclick="myFunction()">
+                            <div class="ab2">
+                                <div class="title1">
+                                    <h4>Number of Transctions 2066</h4>
+                                    <h4>Single minimum purchase 5</h4>
+                                </div>
+                                <div class="title1">
+                                    <h4>INTERMEDIATE</h4>
+                                    <h4>Minimum entry balance 5,000</h4>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="a1">
+                        <button class="b1" onclick="myFunction()">
+                            <div class="ab3">
+                                <div class="title1">
+                                    <h4>Number of Transctions 6231</h4>
+                                    <h4>Single minimum purchase 10</h4>
+                                </div>
+                                <div class="title1">
+                                    <h4>ADVANCED</h4>
+                                    <h4>Minimum entry balance 20,000 </h4>
+                                </div>
+                            </div>
+
+                        </button>
+
+                        <button class="b2" onclick="myFunction()">
+                            <div class="ab4">
+                                <div class="title1">
+                                    <h4>Number of Transctions 6231</h4>
+                                    <h4>Single minimum purchase 50</h4>
+                                </div>
+                                <div class="title1">
+                                    <h4>VIP ROOM</h4>
+                                    <h4>Minimum entry balance 50,000 </h4>
+                                </div>
+                            </div>
+                        </button>
+
+                    </div>
+                </div>
+                {% elif coin.quantity >= 100 and coin.quantity <= 4999 %}
+                <div class="roomcontainer">
+
+                    <div class="a1">
+                        <a class="b1" href="/app/new_member/">
+                            <div class="ab1">
+                                <div class="title1">
+                                    <h4>Number of Transctions 6231</h4>
+                                    <h4>Single minimum purchase 1</h4>
+                                </div>
+                                <div class="title1">
+                                    <h4>NEW MEMBER</h4>
+                                    <h4>Minimum entry balance 100 </h4>
+                                </div>
+                            </div>
+
+                        </a>
+                        <button class="b2" onclick="myFunction()">
+                            <div class="ab2">
+                                <div class="title1">
+                                    <h4>Number of Transctions 2066</h4>
+                                    <h4>Single minimum purchase 5</h4>
+                                </div>
+                                <div class="title1">
+                                    <h4>INTERMEDIATE</h4>
+                                    <h4>Minimum entry balance 5,000</h4>
+                                </div>
+                            </div>
+                        </button>
+
+                    </div>
+
+                    <div class="a1">
+                        <button class="b1" onclick="myFunction()">
+                            <div class="ab3">
+                                <div class="title1">
+                                    <h4>Number of Transctions 6231</h4>
+                                    <h4>Single minimum purchase 10</h4>
+                                </div>
+                                <div class="title1">
+                                    <h4>ADVANCED</h4>
+                                    <h4>Minimum entry balance 20,000 </h4>
+                                </div>
+                            </div>
+
+                        </button>
+
+                        <button class="b2" onclick="myFunction()">
+                            <div class="ab4">
+                                <div class="title1">
+                                    <h4>Number of Transctions 6231</h4>
+                                    <h4>Single minimum purchase 50</h4>
+                                </div>
+                                <div class="title1">
+                                    <h4>VIP ROOM</h4>
+                                    <h4>Minimum entry balance 50,000 </h4>
+                                </div>
+                            </div>
+                        </button>
+
+                    </div>
+                </div>
+                {% elif coin.quantity >= 5000 and coin.quantity <= 19999 %}
+                <div class="roomcontainer">
+
+                    <div class="a1">
+                        <a class="b1" href="/app/new_member/">
+                            <div class="ab1">
+                                <div class="title1">
+                                    <h4>Number of Transctions 6231</h4>
+                                    <h4>Single minimum purchase 1</h4>
+                                </div>
+                                <div class="title1">
+                                    <h4>NEW MEMBER</h4>
+                                    <h4>Minimum entry balance 100 </h4>
+                                </div>
+                            </div>
+
+                        </a>
+                        <a class="b2" href="/app/intermediate/">
+                            <div class="ab2">
+                                <div class="title1">
+                                    <h4>Number of Transctions 2066</h4>
+                                    <h4>Single minimum purchase 5</h4>
+                                </div>
+                                <div class="title1">
+                                    <h4>INTERMEDIATE</h4>
+                                    <h4>Minimum entry balance 5,000</h4>
+                                </div>
+                            </div>
+                        </a>
+
+                    </div>
+
+                    <div class="a1">
+                        <button class="b1" onclick="myFunction()">
+                            <div class="ab3">
+                                <div class="title1">
+                                    <h4>Number of Transctions 6231</h4>
+                                    <h4>Single minimum purchase 10</h4>
+                                </div>
+                                <div class="title1">
+                                    <h4>ADVANCED</h4>
+                                    <h4>Minimum entry balance 20,000 </h4>
+                                </div>
+                            </div>
+
+                        </button>
+
+                        <button class="b2" onclick="myFunction()">
+                            <div class="ab4">
+                                <div class="title1">
+                                    <h4>Number of Transctions 6231</h4>
+                                    <h4>Single minimum purchase 50</h4>
+                                </div>
+                                <div class="title1">
+                                    <h4>VIP ROOM</h4>
+                                    <h4>Minimum entry balance 50,000 </h4>
+                                </div>
+                            </div>
+                        </button>
+
+                    </div>
+                </div>
+                {% elif coin.quantity >= 20000 and coin.quantity <= 49999 %}
+                <div class="roomcontainer">
+
+                    <div class="a1">
+                        <a class="b1" href="/app/new_member/">
+                            <div class="ab1">
+                                <div class="title1">
+                                    <h4>Number of Transctions 6231</h4>
+                                    <h4>Single minimum purchase 1</h4>
+                                </div>
+                                <div class="title1">
+                                    <h4>NEW MEMBER</h4>
+                                    <h4>Minimum entry balance 100 </h4>
+                                </div>
+                            </div>
+
+                        </a>
+                        <a class="b2" href="/app/intermediate/">
+                            <div class="ab2">
+                                <div class="title1">
+                                    <h4>Number of Transctions 2066</h4>
+                                    <h4>Single minimum purchase 5</h4>
+                                </div>
+                                <div class="title1">
+                                    <h4>INTERMEDIATE</h4>
+                                    <h4>Minimum entry balance 5,000</h4>
+                                </div>
+                            </div>
+                        </a>
+
+                    </div>
+
+                    <div class="a1">
+                        <a class="b1" href="/app/advanced/">
+                            <div class="ab3">
+                                <div class="title1">
+                                    <h4>Number of Transctions 6231</h4>
+                                    <h4>Single minimum purchase 10</h4>
+                                </div>
+                                <div class="title1">
+                                    <h4>ADVANCED</h4>
+                                    <h4>Minimum entry balance 20,000 </h4>
+                                </div>
+                            </div>
+
+                        </a>
+                        <button class="b2" onclick="myFunction()">
+                            <div class="ab4">
+                                <div class="title1">
+                                    <h4>Number of Transctions 6231</h4>
+                                    <h4>Single minimum purchase 50</h4>
+                                </div>
+                                <div class="title1">
+                                    <h4>VIP ROOM</h4>
+                                    <h4>Minimum entry balance 50,000 </h4>
+                                </div>
+                            </div>
+                        </button>
+
+                    </div>
+                </div>
+                {% else %}
+                <div class="roomcontainer">
+
+                    <div class="a1">
+                        <a class="b1" href="/app/new_member/">
+                            <div class="ab1">
+                                <div class="title1">
+                                    <h4>Number of Transctions 6231</h4>
+                                    <h4>Single minimum purchase 1</h4>
+                                </div>
+                                <div class="title1">
+                                    <h4>NEW MEMBER</h4>
+                                    <h4>Minimum entry balance 100 </h4>
+                                </div>
+                            </div>
+
+                        </a>
+                        <a class="b2" href="/app/intermediate/">
+                            <div class="ab2">
+                                <div class="title1">
+                                    <h4>Number of Transctions 2066</h4>
+                                    <h4>Single minimum purchase 5</h4>
+                                </div>
+                                <div class="title1">
+                                    <h4>INTERMEDIATE</h4>
+                                    <h4>Minimum entry balance 5,000</h4>
+                                </div>
+                            </div>
+                        </a>
+
+                    </div>
+
+                    <div class="a1">
+                        <a class="b1" href="/app/advanced/">
+                            <div class="ab3">
+                                <div class="title1">
+                                    <h4>Number of Transctions 6231</h4>
+                                    <h4>Single minimum purchase 10</h4>
+                                </div>
+                                <div class="title1">
+                                    <h4>ADVANCED</h4>
+                                    <h4>Minimum entry balance 20,000 </h4>
+                                </div>
+                            </div>
+
+                        </a>
+                        <a class="b2" href="/app/vip_room/">
+                            <div class="ab4">
+                                <div class="title1">
+                                    <h4>Number of Transctions 6231</h4>
+                                    <h4>Single minimum purchase 50</h4>
+                                </div>
+                                <div class="title1">
+                                    <h4>VIP ROOM</h4>
+                                    <h4>Minimum entry balance 50,000 </h4>
+                                </div>
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+                {% endif %}
+                {% endblock %}

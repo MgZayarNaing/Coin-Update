@@ -1,0 +1,33 @@
+{% extends 'admin_base.html' %}
+
+{% block body %}
+
+<form method="POST" action="/myadmin/admin_add_coin/">
+    {% csrf_token %}
+
+    <select name="customer">
+      {% for c in customer %}
+      {% if c.username != "admin" and c.status == True %}
+      <option value="{{c.id}}">{{c.username}}</option>
+      {% endif %}
+      {% endfor %}
+    </select>
+
+    <select name="coin_type">
+      {% for c in coin_type %}
+      <option value="{{c.id}}">{{c.type}}</option>
+      {% endfor %}
+    </select>
+
+    <select name="network_type">
+      {% for c in network_type %}
+      <option value="{{c.id}}">{{c.type}}</option>
+      {% endfor %}
+    </select>
+
+    <input type="number" name="quantity">
+    <button type="submit">Add</button>
+
+</form>
+
+{% endblock %}

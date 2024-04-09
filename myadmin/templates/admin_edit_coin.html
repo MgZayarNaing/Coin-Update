@@ -1,0 +1,30 @@
+{% extends 'admin_base.html' %}
+
+{% block body %}
+
+<form method="POST" action="/myadmin/admin_edit_coin/{{coin.id}}/">
+    {% csrf_token %}
+
+    
+
+    <input type="number"value="{{coin.quantity}}" id="old_coin" name="quantity">
+    <input type="number" id="new_coin">
+    <input type="number" readonly name="balance" id="balance">
+    <button type="submit">Edit</button>
+
+</form>
+
+<script>
+    function calculation(){
+        
+        let a = (Number(document.getElementById('old_coin').value) + Number(document.getElementById('new_coin').value));
+        const balance = a;
+        
+        document.getElementById('balance').value = balance;
+    }
+
+    document.getElementById('old_coin').oninput = calculation;
+    document.getElementById('new_coin').oninput = calculation;
+</script>
+
+{% endblock %}

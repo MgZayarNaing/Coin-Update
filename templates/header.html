@@ -1,0 +1,143 @@
+{% load static %}
+
+<!-- <header class="p-3 text-bg-dark">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
+        </a>
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
+          <li><a href="/app/room_choice/" class="nav-link px-2 text-white">Room Choice</a></li>
+          <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
+          <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
+          <li><a href="#" class="nav-link px-2 text-white">About</a></li>
+        </ul>
+
+        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+          <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
+        </form>
+        {% if user.is_authenticated %}
+        <div class="dropdown12 text-end">
+          <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown12-toggle" data-bs-toggle="dropdown12" aria-expanded="false">
+            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+          </a>
+          <ul class="dropdown12-menu text-small">
+            <li><a class="dropdown12-item" href="#">{{user.username}}</a></li>
+            <li><a class="dropdown12-item" href="/app/balance/">Balance</a></li>
+            <li><a class="dropdown12-item" href="#">Profile</a></li>
+            <li><hr class="dropdown12-divider"></li>
+            <li><a class="dropdown12-item" href="/logout/">Sign out</a></li>
+          </ul>
+        </div>
+        {% else %}
+
+        <div class="text-end">
+          <a href="/login/"><button type="button" class="btn btn-outline-light me-2">Login</button></a>
+          <a href="/register/"><button type="button" class="btn btn-warning">Sign-up</button></a>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </header> -->
+
+<!-- header section starts  -->
+
+<style>
+  .dropdown12 {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  .dropdown12 span {
+    font-size: 1.7rem;
+    color: #444433;
+
+  }
+  
+  .dropdown12-content {
+    display: none;
+    position: absolute;
+    padding: 12px 16px;
+    z-index: 1;
+    font-weight: 500;
+  }
+
+  .dropdown12-content a {
+    display: flex;
+    flex-direction: row;
+    width: 150px;
+    height: 50px;
+    color: white;
+    background-color: gray;
+    justify-content: start;
+    align-items: center;
+    padding: 20px;
+  } 
+
+  .linkdrowpdown{
+    color: white;
+    font-size: 1.7rem;
+  }
+  
+  .dropdown12:hover .dropdown12-content {
+    display: block;
+  }
+
+  .dropdown12-img {
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    border-radius: 50%;
+  }
+
+  .dropdown12 a:hover{
+    color: black;
+  }
+  </style>
+  
+
+<header class="header">
+
+  <div id="menu-btn" class="fas fa-bars"></div>
+
+  <a href="/" class="logo"> coffee <i class="fas fa-mug-hot"></i> </a>
+
+  <nav class="navbar">
+    <a href="/" class="link">home</a>
+    <a href="#about" class="link">about</a>
+    {% if user.is_authenticated %}
+    <div class="dropdown12">
+      <span>Activities <i class="fas fa-caret-down"></i></span>
+      <div class="dropdown12-content">
+        <a href="/app/balance/" class="linkdrowpdown"  onmouseover="this.style.backgroundColor='white'" onmouseout="this.style.backgroundColor='#000000'">Balance</a>
+        <a href="/app/deposit/" class="linkdrowpdown"  onmouseover="this.style.backgroundColor='white'" onmouseout="this.style.backgroundColor='#000000'">Deposit</a>
+        <a href="/app/withdraw/" class="linkdrowpdown"  onmouseover="this.style.backgroundColor='white'" onmouseout="this.style.backgroundColor='#000000'">Withdraw</a>
+      </div>
+    </div>
+    <a href="/app/room_choice/" class="link">Investment Hall</a>
+    {% endif %}
+    <a href="#book" class="link">book</a>
+  </nav>
+  <div class="a4">
+    {% if user.is_authenticated %}
+    <!-- <a href="/logout/" class="login">Logout</a> -->
+    <div class="dropdown12">
+      <img class="dropdown12-img" src="{% static 'img/image-hero-desktop.png' %}" alt="">
+
+      <div class="dropdown12-content">
+        <a href="#" class="linkdrowpdown" onmouseover="this.style.backgroundColor='white'" onmouseout="this.style.backgroundColor='#000000'">{{user.username}}</a>
+        <a href="/logout/" class="linkdrowpdown"  onmouseover="this.style.backgroundColor='white'" onmouseout="this.style.backgroundColor='#000000'">logout</a>
+      </div>
+    </div>
+    {% else %}
+    <a href="/login/" class="login">Login</a>
+    <a href="/register/" class="signup">Sign-up</a>
+    {% endif %}
+  </div>
+
+</header>
+
+<!-- header section ends -->
